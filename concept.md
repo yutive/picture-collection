@@ -2,7 +2,7 @@
 
 ## Beschreibung
 
-Meine Grundidee ist es eine online Bildergalerie zu machen bei der man Bilder hochladen kann. Diese Bilder kann man dann auch anklicken, um sie in gross anzuschauen. Zudem möchte ich es passwortgeschützt machen mit einem Admin der dieses Passwort ändern , wie auch neue bilder hochladen kann.
+Meine Grundidee ist es eine online Bildergalerie zu machen bei der man Bilder hochladen kann. Diese Bilder kann man dann auch anklicken, um sie in gross anzuschauen. Zudem möchte ich es passwortgeschützt machen mit einem Admin der dieses Passwort ändern , wie auch neue bilder hochladen kann. Falls ich noch vörig Zeit haben werde möchte ich noch verschiedene Alben implementieren.
 
 ## Technologien
 
