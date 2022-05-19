@@ -1,2 +1,1 @@
-# picture-collection
-Final Project in ZLI
+# Picture-Collection
