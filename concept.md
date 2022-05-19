@@ -29,6 +29,8 @@ Ich denke die einzigen Risiken, die ich habe, sind dass ich mit React noch zu we
 
 ## Konzept für die Umsetzung in Form eines Klassendiagramms, Struktur der Applikation, Files
 
+![wireframe](Resources/componentsStructure.png)
+
 ## Arbeitspakete
 
 [Github Projects](https://github.com/yutive/picture-collection/projects/1)
