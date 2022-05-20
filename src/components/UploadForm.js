@@ -9,14 +9,21 @@ const UploadForm = () => {
 
     const types = ['image/png', 'image/jpg', 'image/jpeg']
 
+    function uploadPic(file) {
+        let uuid = crypto.randomUUID();
+        const storageRef = ref(storage, uuid);
+        uploadBytes(storageRef, file).then((snap) => {
+        });
+    }
+
     const changeHandler = (e) => {
         let selected = e.target.files[0];
+
 
         if (selected && types.includes(selected.type)) {
             let file = selected
             setError('')
-            const storageRef = ref(storage, 'some-child');
-            uploadBytes(storageRef, file).then((snap) => {});
+            uploadPic(file)
         } else {
             setFile(null);
             setError('Please select an image file (png, jpg, jpeg)')
