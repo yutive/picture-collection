@@ -9,11 +9,12 @@ const PictureGrid = () => {
     return (
         <div className="img-grid">
             images
-            <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+            <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mb-3 mt-3">
                 List all songs
             </button>
-
-            {allUrls.map(url => <img key={url} src={url} alt={url} />)}
+            <div className="grid grid-cols-4 gap-4">
+                {allUrls.map(url => <img key={url} src={url} alt={url} className="rounded" />)}
+            </div>
         </div>
     )
 }
