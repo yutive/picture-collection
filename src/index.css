@@ -9,7 +9,7 @@
 
 /* base styles & title */
 body{
-  font-family: "Noto Serif";
+  font-family: "Noto Serif", serif;
   color: var(--secondary);
 }
 .App{
