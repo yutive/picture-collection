@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react';
-import {projectStorage} from "../firebase/config";
-import {percentage} from "tailwindcss/lib/util/dataTypes";
+import {storage} from "../firebase/config";
 
 const useStorage = (file) => {
     const [progress, setProgress] = useState(0);
@@ -9,7 +8,7 @@ const useStorage = (file) => {
 
     useEffect(() => {
         //references
-        const storageRef = projectStorage.ref(file.name)
+        const storageRef = storage.ref(file.name)
         storageRef.put(file).on('state_changed', (snap) => {
             let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
             setProgress(percentage)
