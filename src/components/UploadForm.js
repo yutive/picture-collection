@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import ProgressBar from "./ProgressBar";
+import {ref, uploadBytes} from "firebase/storage";
+import {storage} from "../firebase/config";
 
 
 const UploadForm = () => {
@@ -12,8 +13,10 @@ const UploadForm = () => {
         let selected = e.target.files[0];
 
         if (selected && types.includes(selected.type)) {
-            setFile(selected);
+            let file = selected
             setError('')
+            const storageRef = ref(storage, 'some-child');
+            uploadBytes(storageRef, file).then((snap) => {});
         } else {
             setFile(null);
             setError('Please select an image file (png, jpg, jpeg)')
@@ -27,7 +30,6 @@ const UploadForm = () => {
             <div className='output'>
                 {error && <div>{error}</div>}
                 {file && <div>{file.name}</div>}
-                {file && <ProgressBar file = {file} setFile={setFile}/>}
             </div>
         </form>
 

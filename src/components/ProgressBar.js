@@ -1,12 +1,12 @@
 import React from "react";
-import useStorage from "../hooks/useStorage";
+import pushPicture from "./pushPicture";
 
 const ProgressBar = ({file, setFile}) => {
-    const {url,progress} = useStorage(file);
-    console.log(progress,url);
+    const {url, progress} = pushPicture(file);
+    console.log(progress, url);
 
     return (
-        <div>progress</div>
+        <div className="progress-bar">progress</div>
     )
 
 }
