@@ -1,8 +1,10 @@
 // Import the functions you need from the SDKs you need
 
-import * as firebase from "firebase/app";
-import 'firebase/storage'
-import 'firebase/filestorage'
+// Import the functions you need from the SDKs you need
+
+import {initializeApp} from "firebase/app"
+import {getStorage} from "firebase/storage";
+import {getFirestore} from "firebase/firestore";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -14,17 +16,17 @@ import 'firebase/filestorage'
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyAT47mi6_zcfbPeIEGIFgIJCSVnSLCyxeU",
+    apiKey: "AIzaSyAT47mi6_zcfbPeIEGIFgIJCSVnSLCyxeU",
 
-  authDomain: "pic-collection-f4772.firebaseapp.com",
+    authDomain: "pic-collection-f4772.firebaseapp.com",
 
-  projectId: "pic-collection-f4772",
+    projectId: "pic-collection-f4772",
 
-  storageBucket: "pic-collection-f4772.appspot.com",
+    storageBucket: "pic-collection-f4772.appspot.com",
 
-  messagingSenderId: "875808359747",
+    messagingSenderId: "875808359747",
 
-  appId: "1:875808359747:web:ce711cf15739a98dcb9bf6"
+    appId: "1:875808359747:web:ce711cf15739a98dcb9bf6"
 
 };
 
@@ -33,7 +35,12 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const projectStorage = firebase.storage();
-const projectFirestore = firebase.firestore();
+const storage = getStorage(app);
 
-export { projectStorage, projectFirestore}
+
+const firestore = getFirestore(app);
+
+
+export {
+    app, storage, firestore
+}
