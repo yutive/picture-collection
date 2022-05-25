@@ -26,7 +26,6 @@ const UploadForm = () => {
             if (file && types.includes(file.type)) {
                 setError('')
                 uploadPicture(file)
-                console.log("huso")
             } else {
                 setFile(null);
                 count++;
