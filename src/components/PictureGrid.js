@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import {getAllImages} from "./getData";
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 
-const PictureGrid = ({ album }) => {
+const PictureGrid = ({album}) => {
     console.count("PictureGrid")
     const [allUrls, setUrls] = useState([])
 

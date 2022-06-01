@@ -3,7 +3,7 @@ import {ref, uploadBytes} from "firebase/storage";
 import {storage} from "../firebase/config";
 
 
-const UploadForm = ({ album }) => {
+const UploadForm = ({album}) => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
 
@@ -11,7 +11,7 @@ const UploadForm = ({ album }) => {
 
     function uploadPicture(file) {
         let uuid = crypto.randomUUID()
-        let name = album+"/"+uuid
+        let name = album + "/" + uuid
         const storageRef = ref(storage, name);
         uploadBytes(storageRef, file).then((snap) => {
         });
@@ -30,8 +30,8 @@ const UploadForm = ({ album }) => {
             } else {
                 setFile(null);
                 count++;
-                if (i + 1 === selected.length){
-                    setError(count+' have failed in cause of wrong format')
+                if (i + 1 === selected.length) {
+                    setError(count + ' have failed in cause of wrong format')
                 }
             }
         }

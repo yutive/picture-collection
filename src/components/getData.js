@@ -1,5 +1,4 @@
-
-import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
+import {getStorage, ref, listAll, getDownloadURL} from "firebase/storage";
 
 const storage = getStorage();
 const baseUrl = 'gs://pic-collection-f4772.appspot.com/';
@@ -18,7 +17,8 @@ async function getAllAlbums() {
     const res = await listAll(listRef)
     return res.prefixes.map(prefix => prefix._location.path_)
 }
-export {storage,getAllImages, getAllAlbums}
+
+export {storage, getAllImages, getAllAlbums}
 
 // Find all the prefixes and items.
 /*
