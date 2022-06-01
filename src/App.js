@@ -5,7 +5,7 @@ import AlbumSelection from "./components/AlbumSelection"
 
 function App() {
     return (
-        <div className="App">
+        <div className="mr-6 ml-6">
             <Title/>
             <AlbumSelection/>
         </div>
