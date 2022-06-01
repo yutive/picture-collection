@@ -3,13 +3,13 @@ import {getAllImages} from "./getData";
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 
-const PictureGrid = ({album}) => {
+const PictureGrid = ({album, modifiedAt}) => {
     console.count("PictureGrid")
     const [allUrls, setUrls] = useState([])
 
     useEffect(() => {
         getAllImages(album).then(urls => setUrls(urls))
-    }, [album])
+    }, [album, modifiedAt])
 
     return (
         <div className="mt-3">

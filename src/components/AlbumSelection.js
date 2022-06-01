@@ -2,12 +2,16 @@ import React, {useState, useEffect} from 'react';
 import UploadForm from './UploadForm';
 import PictureGrid from "./PictureGrid";
 import {getAllAlbums} from "./getData";
+import {ref, uploadBytes} from "firebase/storage";
+
+import {storage} from "../firebase/config";
 
 const AlbumSelection = () => {
     const [showAlbum, setShowAlbum] = useState(null);
-    const [allAlbums, setAlbums] = useState([])
-    const buttonStyle = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mb-3 mt-3 mr-3"
-    const chosenButtonStyle = "bg-blue-500 opacity-60 text-white font-bold py-1 px-2 rounded mb-3 mt-3 mr-3"
+    const [modifiedAt, setModifiedAt] = useState(null);
+    const [allAlbums, setAlbums] = useState([]);
+    const chosenButtonStyle = "bg-violet-500 hover:bg-violet-700 text-white font-bold py-1 px-2 rounded mb-3 mt-3 mr-3 overflow-x-auto";
+    const buttonStyle = "bg-violet-500 opacity-60 text-white font-bold py-1 px-2 rounded mb-3 mt-3 mr-3 overflow-x-auto";
     console.count("AlbumSelection")
 
     useEffect(() => {
@@ -19,20 +23,33 @@ const AlbumSelection = () => {
         setShowAlbum(event.target.value)
     }
 
-    return (
-        <div>
-            <div className="album-selection">
-                {allAlbums.map(name =>
-                    <button key={name} value={name} onClick={handleClick}
-                            className={name !== showAlbum ? chosenButtonStyle : buttonStyle}
-                    >
-                        {name}
-                    </button>
-                )}
-            </div>
-            <UploadForm album={showAlbum}/>
-            <PictureGrid album={showAlbum}/>
+    function handleKeyPress(event) {
+        if (event.key === 'Enter' && event.target.value !== "") {
+            console.log(event.target.value)
+            uploadAlbum(event.target.value)
+            event.target.value = "";
+        }
+    }
+
+    function uploadAlbum(albumName) {
+        let name = albumName + "/.keep";
+        const storageRef = ref(storage, name);
+        uploadBytes(storageRef).then(() => {
+        });
+    }
+
+    return (<div>
+        <div className="overflow-auto max-h-[120px] mb-4 ml-0">
+            {allAlbums.map(name => <button key={name} value={name} onClick={handleClick}
+                                           className={name !== showAlbum ? buttonStyle : chosenButtonStyle}
+            >
+                {name}
+            </button>)}
+            <input type="text" placeholder="New Album" onKeyDown={handleKeyPress}
+                   className="w-[105px] placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-600 focus:ring-1 bg-violet-500 opacity-60 text-white font-bold py-1 px-2 rounded mb-3 mt-3 mr-3 overflow-x-auto"/>
         </div>
-    )
+        <UploadForm onUpload={() => setModifiedAt(new Date())} album={showAlbum}/>
+        <PictureGrid album={showAlbum} modifiedAt={modifiedAt}/>
+    </div>)
 }
 export default AlbumSelection;

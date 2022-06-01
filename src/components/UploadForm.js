@@ -3,7 +3,7 @@ import {ref, uploadBytes} from "firebase/storage";
 import {storage} from "../firebase/config";
 
 
-const UploadForm = ({album}) => {
+const UploadForm = ({album, onUpload}) => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
 
@@ -13,8 +13,7 @@ const UploadForm = ({album}) => {
         let uuid = crypto.randomUUID()
         let name = album + "/" + uuid
         const storageRef = ref(storage, name);
-        uploadBytes(storageRef, file).then((snap) => {
-        });
+        uploadBytes(storageRef, file).then((snap) => onUpload());
     }
 
     const changeHandler = (e) => {
@@ -41,7 +40,8 @@ const UploadForm = ({album}) => {
     return (
 
         <form>
-            <input type='file' multiple onChange={changeHandler}/>
+            <input type='file' multiple onChange={changeHandler}
+                   className="w-auto mb-6 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"/>
             <div className='output'>
                 {error && <div>{error}</div>}
                 {file && <div>{file.name}</div>}
