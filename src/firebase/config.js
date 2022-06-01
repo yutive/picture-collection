@@ -3,7 +3,7 @@
 // Import the functions you need from the SDKs you need
 
 import {initializeApp} from "firebase/app"
-import {getStorage, ref, listAll} from "firebase/storage";
+import {getStorage} from "firebase/storage";
 import {getFirestore} from "firebase/firestore";
 
 

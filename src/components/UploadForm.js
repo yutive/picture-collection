@@ -3,7 +3,7 @@ import {ref, uploadBytes} from "firebase/storage";
 import {storage} from "../firebase/config";
 
 
-const UploadForm = () => {
+const UploadForm = ({ album }) => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
 
@@ -11,7 +11,8 @@ const UploadForm = () => {
 
     function uploadPicture(file) {
         let uuid = crypto.randomUUID()
-        const storageRef = ref(storage, uuid);
+        let name = album+"/"+uuid
+        const storageRef = ref(storage, name);
         uploadBytes(storageRef, file).then((snap) => {
         });
     }
