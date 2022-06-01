@@ -4,11 +4,14 @@ const storage = getStorage();
 const baseUrl = 'gs://pic-collection-f4772.appspot.com/';
 
 async function getAllImages(albumPath = "") {
-
 // Create a reference under which you want to list
     const listRef = ref(storage, baseUrl + albumPath);
-    const res = await listAll(listRef)
-
+    let res = await listAll(listRef)
+    res.items.forEach(item => {
+        if (item._location.path_.endsWith(".keep")) {
+            res.items.splice(res.items.indexOf(item), 1);
+        }
+    })
     return await Promise.all(res.items.map(async (itemRef) => await getDownloadURL(itemRef)))
 }
 
