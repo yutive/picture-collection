@@ -8,7 +8,8 @@ import {storage} from "../firebase/config";
 
 const AlbumSelection = () => {
     const [showAlbum, setShowAlbum] = useState(null);
-    const [modifiedAt, setModifiedAt] = useState(null);
+    const [modifiedGalleryAt, setModifiedGalleryAt] = useState(null);
+    const [modifiedAlbumAt, setModifiedAlbumAt] = useState(null);
     const [allAlbums, setAlbums] = useState([]);
     const chosenButtonStyle = "bg-violet-500 hover:bg-violet-700 text-white font-bold py-1 px-2 rounded mb-3 mt-3 mr-3 overflow-x-auto";
     const buttonStyle = "bg-violet-500 opacity-60 text-white font-bold py-1 px-2 rounded mb-3 mt-3 mr-3 overflow-x-auto";
@@ -16,18 +17,18 @@ const AlbumSelection = () => {
 
     useEffect(() => {
         getAllAlbums().then(albums => setAlbums(albums))
-    }, [])
+    }, [modifiedAlbumAt])
 
 
     function handleClick(event) {
         setShowAlbum(event.target.value)
     }
 
-    function handleKeyPress(event) {
+    const handleKeyPress = (event) => {
         if (event.key === 'Enter' && event.target.value !== "") {
-            console.log(event.target.value)
-            uploadAlbum(event.target.value)
+            uploadAlbum(event.target.value);
             event.target.value = "";
+            setModifiedAlbumAt(new Date());
         }
     }
 
@@ -48,8 +49,8 @@ const AlbumSelection = () => {
             <input type="text" placeholder="New Album" onKeyDown={handleKeyPress}
                    className="w-[105px] placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-600 focus:ring-1 bg-violet-500 opacity-60 text-white font-bold py-1 px-2 rounded mb-3 mt-3 mr-3 overflow-x-auto"/>
         </div>
-        <UploadForm onUpload={() => setModifiedAt(new Date())} album={showAlbum}/>
-        <PictureGrid album={showAlbum} modifiedAt={modifiedAt}/>
+        <UploadForm onUpload={() => setModifiedGalleryAt(new Date())} album={showAlbum}/>
+        <PictureGrid album={showAlbum} modifiedAt={modifiedGalleryAt}/>
     </div>)
 }
 export default AlbumSelection;
