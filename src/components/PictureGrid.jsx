@@ -13,7 +13,7 @@ const PictureGrid = ({album, modifiedAt}) => {
 
     return (
         <div className="mt-3">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid sm:grid-cols-3 gap-4 grid-cols-1">
                 {allUrls.map(url =>
                     <Zoom key={url} zoomMargin={10}>
                         <img src={url} alt={url} className="rounded"/>
