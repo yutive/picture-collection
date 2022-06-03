@@ -28,7 +28,6 @@ const AlbumSelection = () => {
         if (event.key === 'Enter' && event.target.value !== "") {
             uploadAlbum(event.target.value);
             event.target.value = "";
-
         }
     }
 
@@ -48,7 +47,7 @@ const AlbumSelection = () => {
             <input type="text" placeholder="New Album" onKeyDown={handleKeyPress}
                    className="w-[105px] placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-600 focus:ring-1 bg-violet-500 opacity-60 text-white font-bold py-1 px-2 rounded mb-3 mt-3 mr-3 overflow-x-auto"/>
         </div>
-        <UploadForm onUpload={() => setModifiedGalleryAt(new Date())} album={showAlbum}/>
+        {showAlbum&&<UploadForm onUpload={() => setModifiedGalleryAt(new Date())} album={showAlbum}/>}
         <PictureGrid album={showAlbum} modifiedAt={modifiedGalleryAt}/>
     </div>)
 }
