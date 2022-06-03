@@ -28,20 +28,18 @@ const AlbumSelection = () => {
         if (event.key === 'Enter' && event.target.value !== "") {
             uploadAlbum(event.target.value);
             event.target.value = "";
-            setModifiedAlbumAt(new Date());
+
         }
     }
 
     function uploadAlbum(albumName) {
         let name = albumName + "/.keep";
         const storageRef = ref(storage, name);
-        uploadBytes(storageRef).then(() => {
-        });
+        uploadBytes(storageRef).then(() => setModifiedAlbumAt(new Date())   );
     }
 
     return (<div>
         <div className="overflow-auto max-h-[120px] mb-4 ml-0">
-            <h2 className="text-center text-2xl mt-4 mb-4">-Your Pictures-</h2>
             {allAlbums.map(name => <button key={name} value={name} onClick={handleClick}
                                            className={name !== showAlbum ? buttonStyle : chosenButtonStyle}
             >
