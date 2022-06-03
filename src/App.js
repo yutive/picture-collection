@@ -1,20 +1,22 @@
 import React from 'react';
-import Header from './components/Header';
-import './index.css';
-import AlbumSelection from "./components/AlbumSelection"
-import "react-router-dom";
-import Signup from "./components/Signup";
-import Account from "./components/Account";
 import {Routes, Route} from "react-router-dom";
 import {AuthContextProvider} from "./context/AuthContext";
+import './index.css';
+
+import AlbumSelection from "./components/AlbumSelection"
+import Signup from "./components/Signup";
+import Account from "./components/Account";
 import Signin from "./components/Signin";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Navbar from "./components/Navbar";
+
+
 
 
 function App() {
-    return (<div className="mr-6 ml-6">
-        <Header/>
+    return (<div>
         <AuthContextProvider>
+            <Navbar/>
             <Routes>
                 <Route
                     path='/'

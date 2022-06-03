@@ -39,6 +39,9 @@ const AlbumSelection = () => {
 
     return (
         <div className="mr-6 ml-6">
+            <h2 className="text-center text-2xl mt-4 mb-4">
+                -Your Pictures-
+            </h2>
             <div className="overflow-auto max-h-[120px] mb-4 ml-0">
                 {allAlbums.map(name =>
                     <button
