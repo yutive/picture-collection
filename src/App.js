@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from './components/Title';
+import Header from './components/Header';
 import './index.css';
 import AlbumSelection from "./components/AlbumSelection"
 import "react-router-dom";
@@ -13,7 +13,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
     return (<div className="mr-6 ml-6">
-        <Title/>
+        <Header/>
         <AuthContextProvider>
             <Routes>
                 <Route
