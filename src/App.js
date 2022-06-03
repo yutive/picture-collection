@@ -19,9 +19,9 @@ function App() {
                 <Route
                     path='/'
                     element={
-                        //<ProtectedRoute>
+                        <ProtectedRoute>
                             <AlbumSelection/>
-                        //</ProtectedRoute>
+                        </ProtectedRoute>
                     }/>
                 <Route path='/signup' element={<Signup/>}/>
                 <Route path='/signin' element={<Signin/>}/>
