@@ -34,21 +34,25 @@ const AlbumSelection = () => {
     function uploadAlbum(albumName) {
         let name = albumName + "/.keep";
         const storageRef = ref(storage, name);
-        uploadBytes(storageRef).then(() => setModifiedAlbumAt(new Date())   );
+        uploadBytes(storageRef).then(() => setModifiedAlbumAt(new Date()));
     }
 
-    return (<div>
-        <div className="overflow-auto max-h-[120px] mb-4 ml-0">
-            {allAlbums.map(name => <button key={name} value={name} onClick={handleClick}
-                                           className={name !== showAlbum ? buttonStyle : chosenButtonStyle}
-            >
-                {name}
-            </button>)}
-            <input type="text" placeholder="New Album" onKeyDown={handleKeyPress}
-                   className="w-[105px] placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-600 focus:ring-1 bg-violet-500 opacity-60 text-white font-bold py-1 px-2 rounded mb-3 mt-3 mr-3 overflow-x-auto"/>
-        </div>
-        {showAlbum&&<UploadForm onUpload={() => setModifiedGalleryAt(new Date())} album={showAlbum}/>}
-        <PictureGrid album={showAlbum} modifiedAt={modifiedGalleryAt}/>
-    </div>)
+    return (
+        <div className="mr-6 ml-6">
+            <div className="overflow-auto max-h-[120px] mb-4 ml-0">
+                {allAlbums.map(name =>
+                    <button
+                        key={name}
+                        value={name}
+                        onClick={handleClick}
+                        className={name !== showAlbum ? buttonStyle : chosenButtonStyle}>
+                        {name}
+                    </button>)}
+                <input type="text" placeholder="New Album" onKeyDown={handleKeyPress}
+                       className="w-[105px] placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-600 focus:ring-1 bg-violet-500 opacity-60 text-white font-bold py-1 px-2 rounded mb-3 mt-3 mr-3 overflow-x-auto"/>
+            </div>
+            {showAlbum && <UploadForm onUpload={() => setModifiedGalleryAt(new Date())} album={showAlbum}/>}
+            <PictureGrid album={showAlbum} modifiedAt={modifiedGalleryAt}/>
+        </div>)
 }
 export default AlbumSelection;
