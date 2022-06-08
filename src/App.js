@@ -7,10 +7,9 @@ import AlbumSelection from "./components/AlbumSelection"
 import Signup from "./components/Signup";
 import Account from "./components/Account";
 import Signin from "./components/Signin";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRouteNotAuth from "./components/ProtectedRouteNotAuth";
 import Navbar from "./components/Navbar";
-
-
+import ProtectedRouteAuth from "./components/ProtectedRouteAuth";
 
 
 function App() {
@@ -21,18 +20,31 @@ function App() {
                 <Route
                     path='/'
                     element={
-                        <ProtectedRoute>
+                        <ProtectedRouteNotAuth>
                             <AlbumSelection/>
-                        </ProtectedRoute>
+                        </ProtectedRouteNotAuth>
                     }/>
-                <Route path='/signup' element={<Signup/>}/>
-                <Route path='/signin' element={<Signin/>}/>
+                <Route
+                    path='/signup'
+                    element={
+                        <ProtectedRouteAuth>
+                            <Signup/>
+                        </ProtectedRouteAuth>
+
+                    }/>
+                <Route
+                    path='/signin'
+                    element={
+                        <ProtectedRouteAuth>
+                            <Signin/>
+                        </ProtectedRouteAuth>
+                    }/>
                 <Route
                     path='/account'
                     element={
-                        <ProtectedRoute>
+                        <ProtectedRouteNotAuth>
                             <Account/>
-                        </ProtectedRoute>
+                        </ProtectedRouteNotAuth>
                     }/>
             </Routes>
         </AuthContextProvider>
