@@ -26,7 +26,6 @@ const UploadForm = ({album, onUpload}) => {
     const changeHandler = (e) => {
         let count = 0;
         let selected = e.target.files;
-        e.target.files = "";
 
         for (let i = 0; i < selected.length; i++) {
             let file = selected[i];

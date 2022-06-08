@@ -29,9 +29,8 @@ const PictureGrid = ({album, modifiedAt}) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     <div className="flex flex-col flex-wrap justify-start items-stretch place-content-stretch">
                         {pictureInColumns[0].map(url =>
-                            <div className="w-full p-1 md:p-2">
+                            <div key={url} className="w-full p-1 md:p-2">
                                 <Zoom
-                                    key={url}
                                     zoomMargin={10}
                                 >
                                     <img
@@ -58,9 +57,8 @@ const PictureGrid = ({album, modifiedAt}) => {
                     </div>
                     <div className="flex flex-col flex-wrap justify-start items-stretch place-content-stretch">
                         {pictureInColumns[2].map(url =>
-                            <div className="w-full p-1 md:p-2">
+                            <div key={url} className="w-full p-1 md:p-2">
                                 <Zoom
-                                    key={url}
                                     zoomMargin={10}
                                 >
                                     <img
