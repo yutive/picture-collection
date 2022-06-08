@@ -3,11 +3,9 @@ import {useNavigate} from "react-router-dom";
 import {UserAuth} from "../context/AuthContext";
 
 const Account = () => {
-    const {user, logout, resetPassword, updateEmail} = UserAuth();
+    const {user, logout, resetPassword} = UserAuth();
     const navigate = useNavigate();
     const [alert, setAlert] = useState(false);
-    const [newEmail, setNewEmail] = useState('');
-
     useEffect(() => {
         setTimeout(() => {
             setAlert(false);
