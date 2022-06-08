@@ -11,17 +11,26 @@ const PictureGrid = ({album, modifiedAt}) => {
         getAllImages(album).then(urls => setUrls(urls))
     }, [album, modifiedAt])
 
-    return (
-        <div className="mt-3">
-            <div className="grid sm:grid-cols-3 gap-4 grid-cols-1">
-                {allUrls.map(url =>
-                    <Zoom key={url} zoomMargin={10}>
-                        <img src={url} alt={url} className="rounded"/>
-                    </Zoom>
-                )}
+    return (<div className="mt-3">
+        <div className="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
+            <div className="flex flex-wrap -m-1 md:-m-2">
+                {allUrls.map(url => <div className="flex flex-wrap sm:w-max md:w-1/2 lg:w-1/3">
+                    <div className="w-full p-1 md:p-2">
+                        <Zoom
+                            key={url}
+                            zoomMargin={10}
+                        >
+                            <img
+                                className="block object-cover object-center w-full h-full rounded-lg"
+                                src={url}
+                                alt={url}
+                            />
+                        </Zoom>
+                    </div>
+                </div>)}
             </div>
         </div>
-    )
+    </div>)
 }
 
 export default PictureGrid;
