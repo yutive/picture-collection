@@ -27,11 +27,11 @@ const Navbar = () => {
                     </Link>
                     {user &&
                         <button
-                        className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+                        className="text-white font-bold cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
                         type="button"
                         onClick={() => setNavbarOpen(!navbarOpen)}
                     >
-                        [==]
+                            ☰
                     </button>}
                 </div>
                 <div
