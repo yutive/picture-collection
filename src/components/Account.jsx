@@ -61,12 +61,6 @@ const Account = () => {
                 </button>
             </div>
         </div>
-        <form onSubmit={handleChangeEmail}>
-            <input type="email" className="border p-3" onChange={(e) => setNewEmail(e.target.value)}/>
-            <input type="submit"
-                   className="w-full hover:bg-violet-500 bg-violet-600 text-white font-medium py-1 px-2 rounded mb-3 mt-3 mr-3 overflow-x-auto"/>
-        </form>
-
     </div>);
 }
 
