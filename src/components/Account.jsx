@@ -32,14 +32,14 @@ const Account = () => {
             console.log(e.message)
         }
     }
-
+/*
     const handleChangeEmail = (event) => {
         event.preventDefault()
         debugger
         updateEmail(user, newEmail).then(() => {
             setNewEmail('')
         }).catch(error => console.log(error))
-    }
+    } */
 
     return (<div className="max-w-[600px] mx-auto my-4  p-4">
         <h1 className="text-2xl font-bold py-4">Account</h1>
@@ -50,7 +50,7 @@ const Account = () => {
         </div>}
         <p>User Email: {user && user.email}</p>
         <div className="container mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
                 <button onClick={handleLogout}
                         className="flex justify-center hover:bg-violet-500 bg-violet-600 text-white font-medium py-1 px-2 rounded lg:mb-3 lg:mt-3 overflow-x-auto">
                     Logout
