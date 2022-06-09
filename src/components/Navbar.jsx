@@ -42,7 +42,7 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <Link to='/signin'
                                       className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
-                                    Signin
+                                    Sign-in
                                 </Link>
                             </li>}
                         {user &&
