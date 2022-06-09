@@ -58,7 +58,7 @@ const AlbumSelection = () => {
             />}
         </div>
         {showAlbum && <UploadForm onUpload={() => setModifiedGalleryAt(new Date())} album={showAlbum}/>}
-        <PictureGrid album={showAlbum} modifiedAt={modifiedGalleryAt}/>
+        <PictureGrid album={showAlbum} modifiedGalleryAt={modifiedGalleryAt} modifiedAlbumAt={modifiedAlbumAt}/>
     </div>)
 }
 export default AlbumSelection;

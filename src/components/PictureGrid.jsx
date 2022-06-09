@@ -13,13 +13,13 @@ function splitToChunks(array, parts) {
     return result;
 }
 
-const PictureGrid = ({album, modifiedAt}) => {
+const PictureGrid = ({album, modifiedGalleryAt, modifiedAlbumAt}) => {
     console.count("PictureGrid")
     const [allUrls, setUrls] = useState([])
 
     useEffect(() => {
         getAllImages(album).then(urls => setUrls(urls, 3))
-    }, [album, modifiedAt])
+    }, [album, modifiedGalleryAt, modifiedAlbumAt])
 
     const pictureInColumns = splitToChunks(allUrls, 3)
 
