@@ -1,6 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import {ref, uploadBytes} from "firebase/storage";
 import {storage} from "../firebase/config";
+import {UserAuth} from "../context/AuthContext";
+
 
 
 
@@ -8,6 +10,8 @@ const UploadForm = ({album, onUpload}) => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
     const [alert, setAlert] = useState(false);
+    const {user} = UserAuth();
+
     useEffect(() => {
         setTimeout(() => {
             setAlert(false);
@@ -50,22 +54,22 @@ const UploadForm = ({album, onUpload}) => {
     }
 
     return (
-
-        <form>
-            <input type='file' multiple onChange={changeHandler}
-                   className="w-auto mb-6 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"/>
-            <div className='output'>
-                {alert &&
-                    <div
-                        className="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800"
-                        role="alert">
-                        <span className="font-medium">Warning! </span>{error}
-                    </div>
-                }
-                {file && <div>{file.name}</div>}
-            </div>
-        </form>
-
+        <div>
+            {user && <form>
+                <input type='file' multiple onChange={changeHandler}
+                       className="w-auto mb-6 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"/>
+                <div className='output'>
+                    {alert &&
+                        <div
+                            className="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800"
+                            role="alert">
+                            <span className="font-medium">Warning! </span>{error}
+                        </div>
+                    }
+                    {file && <div>{file.name}</div>}
+                </div>
+            </form>}
+        </div>
     )
 
 }

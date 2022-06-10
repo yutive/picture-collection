@@ -10,7 +10,7 @@ const Navbar = () => {
     const handleLogout = async () => {
         try {
             await logout()
-            navigate('/signin')
+            navigate('/')
             console.log("You are logged out")
         } catch (e) {
             console.log(e.message)
@@ -25,32 +25,47 @@ const Navbar = () => {
                           className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white">
                         Picture Collection
                     </Link>
-                    {user &&
-                        <button
+                    <button
                         className="text-white font-bold cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
                         type="button"
                         onClick={() => setNavbarOpen(!navbarOpen)}
                     >
-                            ☰
-                    </button>}
+                        ☰
+                    </button>
                 </div>
                 <div
                     className={"lg:flex flex-grow items-center" + (navbarOpen ? " flex" : " hidden")}
                     id="example-navbar-danger"
                 >
                     <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-                        {user && <li className="nav-item">
-                            <Link to='/account'
-                                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
-                                Account
-                            </Link>
-                        </li>}
-                        {user && <li className="nav-item">
-                            <button onClick={handleLogout}
-                                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
-                                Logout
-                            </button>
-                        </li>}
+                        {!user &&
+                            <li className="nav-item">
+                                <Link to='/signin'
+                                      className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
+                                    Sign-in
+                                </Link>
+                            </li>}
+                        {user &&
+                            <li className="nav-item">
+                                <Link to='/settings'
+                                      className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
+                                    Settings
+                                </Link>
+                            </li>}
+                        {user &&
+                            <li className="nav-item">
+                                <Link to='/account'
+                                      className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
+                                    Account
+                                </Link>
+                            </li>}
+                        {user &&
+                            <li className="nav-item">
+                                <button onClick={handleLogout}
+                                        className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
+                                    Logout
+                                </button>
+                            </li>}
                     </ul>
                 </div>
             </div>

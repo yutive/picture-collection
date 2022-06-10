@@ -7,9 +7,9 @@ import AlbumSelection from "./components/AlbumSelection"
 import Signup from "./components/Signup";
 import Account from "./components/Account";
 import Signin from "./components/Signin";
+import Settings from "./components/Settings";
 import ProtectedRouteNotAuth from "./components/ProtectedRouteNotAuth";
 import Navbar from "./components/Navbar";
-import ProtectedRouteAuth from "./components/ProtectedRouteAuth";
 
 
 function App() {
@@ -20,24 +20,27 @@ function App() {
                 <Route
                     path='/'
                     element={
-                        <ProtectedRouteNotAuth>
-                            <AlbumSelection/>
-                        </ProtectedRouteNotAuth>
+                        <AlbumSelection/>
                     }/>
                 <Route
                     path='/signup'
                     element={
-                        <ProtectedRouteAuth>
-                            <Signup/>
-                        </ProtectedRouteAuth>
+                        <ProtectedRouteNotAuth>
+                                <Signup/>
+                        </ProtectedRouteNotAuth>
 
                     }/>
                 <Route
                     path='/signin'
                     element={
-                        <ProtectedRouteAuth>
-                            <Signin/>
-                        </ProtectedRouteAuth>
+                        <Signin/>
+                    }/>
+                <Route
+                    path='/settings'
+                    element={
+                        <ProtectedRouteNotAuth>
+                            <Settings/>
+                        </ProtectedRouteNotAuth>
                     }/>
                 <Route
                     path='/account'
