@@ -15,6 +15,19 @@ async function getAllImages(albumPath = "") {
     return await Promise.all(res.items.map(async (itemRef) => await getDownloadURL(itemRef)))
 }
 
+export async function getAllImagePaths(albumPath    ) {
+// Create a reference under which you want to list
+    const listRef = ref(storage, baseUrl + albumPath);
+    let res = await listAll(listRef)
+    let count = 0;
+    let pathList = [];
+    res.items.forEach(item => {
+        pathList[count] = item._location.path_;
+        count++;
+    })
+    return pathList
+}
+
 async function getAllAlbums() {
     const listRef = ref(storage, baseUrl);
     const res = await listAll(listRef)
