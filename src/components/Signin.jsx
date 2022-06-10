@@ -30,8 +30,7 @@ const Signin = () => {
                     Sign in to your account
                 </h1>
                 <p className="py-2">
-                    Don't have an account yet? <Link to='/signup' className='text-violet-700 hover:underline'> Sign
-                    up. </Link>
+                    Don't have an account yet? Write an Mail to the Admin
                 </p>
             </div>
             {error &&
