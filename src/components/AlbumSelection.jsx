@@ -71,6 +71,7 @@ const AlbumSelection = () => {
             album={showAlbum}
             modifiedGalleryAt={modifiedGalleryAt}
             modifiedAlbumAt={modifiedAlbumAt}
+            setModifiedGalleryAt={setModifiedGalleryAt}
         />
     </div>)
 }
