@@ -4,7 +4,6 @@ import {AuthContextProvider} from "./context/AuthContext";
 import './index.css';
 
 import AlbumSelection from "./components/AlbumSelection"
-import Signup from "./components/Signup";
 import Account from "./components/Account";
 import Signin from "./components/Signin";
 import Settings from "./components/Settings";
@@ -21,14 +20,6 @@ function App() {
                     path='/'
                     element={
                         <AlbumSelection/>
-                    }/>
-                <Route
-                    path='/signup'
-                    element={
-                        <ProtectedRouteNotAuth>
-                                <Signup/>
-                        </ProtectedRouteNotAuth>
-
                     }/>
                 <Route
                     path='/signin'
